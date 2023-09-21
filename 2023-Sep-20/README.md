@@ -1,6 +1,6 @@
 The task was to create a script that could go from a msvc, C++ link error to a more readable and understandable error
 
-A small description of the example error is provided below: 
+A small description of the example error is provided below, full error can be found in error.txt: 
 
 
 Severity    Code    Description    Project    File    Line    Suppression State
