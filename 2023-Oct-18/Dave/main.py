@@ -85,7 +85,7 @@ def get_all_legal_placements_for_word(
 
 def is_legal_placement(target_line: str, line_to_write: str) -> bool:
     for target_char, char_to_write in zip(target_line, line_to_write):
-        if char_to_write != target_char and target_char != " ":
+        if (char_to_write is not target_char) and (target_char is not " "):
             return False
     return True
 
