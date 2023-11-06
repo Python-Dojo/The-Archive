@@ -10,7 +10,7 @@ class WordGrid:
         self.cols = cols
         self.initialise_word_grid()
 
-    def __repr__(self):
+    def __str__(self):
         return self.get_stringified_word_grid()
 
     def __iter__(self):
