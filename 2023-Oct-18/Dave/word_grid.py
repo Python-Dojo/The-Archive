@@ -32,9 +32,7 @@ class WordGrid:
             output += f"{row_string}\n"
         return output
 
-    def is_legal_read_or_write(
-        self, position: Point, direction: Direction, length: int
-    ) -> bool:
+    def is_valid_line(self, position: Point, direction: Direction, length: int) -> bool:
         initial_row_index = position.row
         initial_col_index = position.col
         max_row_index = len(self.grid) - 1
@@ -59,7 +57,7 @@ class WordGrid:
         return True
 
     def read_line(self, position: Point, direction: Direction, length: int) -> str:
-        if not self.is_legal_read_or_write(position, direction, length):
+        if not self.is_valid_line(position, direction, length):
             raise GridOverflowError()
 
         result = ""
@@ -75,7 +73,7 @@ class WordGrid:
         return result
 
     def write_line(self, position: Point, direction: Direction, data: str) -> bool:
-        if not self.is_legal_read_or_write(position, direction, len(data)):
+        if not self.is_valid_line(position, direction, len(data)):
             raise GridOverflowError()
 
         current_row, current_col = position

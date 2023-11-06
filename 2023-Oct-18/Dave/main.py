@@ -68,7 +68,7 @@ def get_all_legal_placements_for_word(
             for direction in Direction:
                 position = Point(row_index, col_index)
 
-                line_can_be_written = word_grid.is_legal_read_or_write(
+                line_can_be_written = word_grid.is_valid_line(
                     position, direction, len(word)
                 )
                 if not line_can_be_written:
