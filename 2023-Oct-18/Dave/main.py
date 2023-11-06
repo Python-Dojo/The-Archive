@@ -62,7 +62,7 @@ def get_all_legal_placements_for_word(
     legal_placements = []
 
     # Iterate through all possible grid locations and orientations
-    for row_index, row in enumerate(word_grid):
+    for row_index, row in enumerate(word_grid.grid):
         for col_index, col in enumerate(row):
             for direction in Direction:
                 position = Point(row_index, col_index)

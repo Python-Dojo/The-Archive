@@ -13,9 +13,6 @@ class WordGrid:
     def __str__(self):
         return self.get_stringified_word_grid()
 
-    def __iter__(self):
-        for row in self.word_grid:
-            yield row
 
     def initialise_word_grid(self):
         self.word_grid = [[" " for col in range(
