@@ -32,18 +32,42 @@ class WordGrid:
             output += f"{row_string}\n"
         return output
 
-    def check_for_grid_overflow(self, row: int, col: int) -> None:
-        if row < 0 or row >= len(self.grid) or col < 0 or col >= len(self.grid[0]):
-            raise GridOverflowError()
+    def is_legal_read_or_write(
+        self, position: Point, direction: Direction, length: int
+    ) -> bool:
+        initial_row_index = position.row
+        initial_col_index = position.col
+        max_row_index = len(self.grid) - 1
+        max_col_index = len(self.grid[0]) - 1
+
+        # A single character would have length 1 but no motion, hence multiplying
+        # the direction amount by length - 1
+        total_row_motion = direction.row * (length - 1)
+        total_col_motion = direction.col * (length - 1)
+
+        final_char_row_index = initial_row_index + total_row_motion
+        final_char_col_index = initial_col_index + total_col_motion
+
+        if (
+            final_char_row_index > max_row_index
+            or final_char_row_index < 0
+            or final_char_col_index > max_col_index
+            or final_char_col_index < 0
+        ):
+            return False
+
+        return True
 
     def read_line(self, position: Point, direction: Direction, length: int) -> str:
+        if not self.is_legal_read_or_write(position, direction, length):
+            raise GridOverflowError()
+
         result = ""
 
         current_row, current_col = position
         next_row, next_col = direction
 
         for i in range(length):
-            self.check_for_grid_overflow(current_row, current_col)
             result += self.grid[current_row][current_col]
             current_row += next_row
             current_col += next_col
@@ -51,11 +75,13 @@ class WordGrid:
         return result
 
     def write_line(self, position: Point, direction: Direction, data: str) -> bool:
+        if not self.is_legal_read_or_write(position, direction, len(data)):
+            raise GridOverflowError()
+
         current_row, current_col = position
         next_row, next_col = direction
 
         for char in data:
-            self.check_for_grid_overflow(current_row, current_col)
             self.grid[current_row][current_col] = char
             current_row += next_row
             current_col += next_col

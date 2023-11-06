@@ -68,12 +68,14 @@ def get_all_legal_placements_for_word(
             for direction in Direction:
                 position = Point(row_index, col_index)
 
-                try:
-                    target_line = word_grid.read_line(
-                        position, direction, len(word))
-                except GridOverflowError:
+                line_can_be_written = word_grid.is_legal_read_or_write(
+                    position, direction, len(word)
+                )
+                if not line_can_be_written:
                     continue
 
+                target_line = word_grid.read_line(
+                    position, direction, len(word))
                 line_can_be_placed = is_legal_placement(
                     target_line=target_line, line_to_write=word
                 )
@@ -90,7 +92,7 @@ def get_all_legal_placements_for_word(
 
 def is_legal_placement(target_line: str, line_to_write: str) -> bool:
     for target_char, char_to_write in zip(target_line, line_to_write):
-        if (char_to_write is not target_char) and (target_char is not " "):
+        if (char_to_write is not target_char) and (target_char != " "):
             return False
     return True
 
