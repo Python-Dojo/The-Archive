@@ -1,64 +1,66 @@
 import random
+from copy import deepcopy
 from word_grid import WordGrid
 from point import Point
 from direction import Direction
 from placement import Placement
+from exceptions import (
+    FailedToGenerateWordSearchError,
+    FailedToPlaceAllWordsError,
+    NoLegalPlacementsError,
+    GridOverflowError,
+)
 
 
 def main():
-    word_list = ["MEOW", "CAT", "WOOF", "DOG"]
+    word_list = ["PYTHON", "DOJO", "CODEHUB", "BRISTOL"]
 
-    word_search = generate_word_search(
-        rows=4, cols=4, word_list=word_list)
-
-    if word_search:
+    try:
+        word_search = generate_word_search(rows=6, cols=9, word_list=word_list)
         print(word_search)
         print("Find these words:")
         print(", ".join(word_list))
-    else:
+    except FailedToGenerateWordSearchError:
         print("Failed to generate word search.")
+        exit(1)
 
 
 def generate_word_search(rows: int, cols: int, word_list: list[str]) -> WordGrid | None:
-    word_search = WordGrid(rows, cols)
+    word_grid = WordGrid(rows, cols)
 
     attempts = 0
+    max_attempts = 10
 
-    while attempts < 10:
-        word_search.initialise_word_grid()
-        filled_word_search = place_words(
-            word_search=word_search, word_list=word_list)
-        if filled_word_search:
+    while attempts < max_attempts:
+        word_grid.initialise_grid()
+        try:
+            filled_word_search = place_words(word_grid, word_list)
             filled_word_search.fill_blank_space()
             return filled_word_search
-        else:
+        except FailedToPlaceAllWordsError:
             attempts += 1
-            continue
     else:
-        return None
+        raise FailedToGenerateWordSearchError()
 
 
-def place_words(word_search: WordGrid, word_list=list[str]) -> WordGrid | None:
-    filled_word_search = word_search
+def place_words(word_grid: WordGrid, word_list: list[str]) -> WordGrid:
+    word_search = deepcopy(word_grid)
 
     for word in word_list:
-        placements = get_all_legal_placements_for_word(
-            word_grid=filled_word_search, word=word
-        )
-        if placements:
+        try:
+            placements = get_all_legal_placements_for_word(word_search, word)
             position, direction = random.choice(placements)
-            filled_word_search.write_line(
-                position=position, orientation=direction, data=word
-            )
-        else:
-            return None
+            word_search.write_line(
+                position=position, orientation=direction, data=word)
+        except NoLegalPlacementsError:
+            raise FailedToPlaceAllWordsError()
 
-    return filled_word_search
+    return word_search
 
 
 def get_all_legal_placements_for_word(
     word_grid: WordGrid, word: str
-) -> list[Placement] | None:
+) -> list[Placement]:
     legal_placements = []
 
     # Iterate through all possible grid locations and orientations
@@ -67,9 +69,10 @@ def get_all_legal_placements_for_word(
             for direction in Direction:
                 position = Point(row_index, col_index)
 
-                target_line = word_grid.read_line(
-                    position, direction, len(word))
-                if not target_line:
+                try:
+                    target_line = word_grid.read_line(
+                        position, direction, len(word))
+                except GridOverflowError:
                     continue
 
                 line_can_be_placed = is_legal_placement(
@@ -80,7 +83,10 @@ def get_all_legal_placements_for_word(
 
                 legal_placements.append(Placement(position, direction))
 
-    return legal_placements
+    if len(legal_placements) == 0:
+        raise NoLegalPlacementsError()
+    else:
+        return legal_placements
 
 
 def is_legal_placement(target_line: str, line_to_write: str) -> bool:
