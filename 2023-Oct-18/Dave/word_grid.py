@@ -26,10 +26,9 @@ class WordGrid:
 
     def get_stringified_word_grid(self) -> str:
         output = ""
-        for row in self.word_grid:
-            for char in row:
-                output += char + " "
-            output += "\n"
+        for row in self.grid:
+            row_string = " ".join(row)
+            output += f"{row_string}\n"
         return output
 
     def read_line(
