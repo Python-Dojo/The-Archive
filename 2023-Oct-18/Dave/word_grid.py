@@ -50,9 +50,9 @@ class WordGrid:
 
         return result
 
-    def write_line(self, position: Point, orientation: Direction, data: str) -> bool:
+    def write_line(self, position: Point, direction: Direction, data: str) -> bool:
         current_row, current_col = position
-        next_row, next_col = orientation
+        next_row, next_col = direction
 
         for char in data:
             self.check_for_grid_overflow(current_row, current_col)

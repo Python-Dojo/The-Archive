@@ -50,8 +50,7 @@ def place_words(word_grid: WordGrid, word_list: list[str]) -> WordGrid:
         try:
             placements = get_all_legal_placements_for_word(word_search, word)
             position, direction = random.choice(placements)
-            word_search.write_line(
-                position=position, orientation=direction, data=word)
+            word_search.write_line(position, direction, word)
         except NoLegalPlacementsError:
             raise FailedToPlaceAllWordsError()
 
