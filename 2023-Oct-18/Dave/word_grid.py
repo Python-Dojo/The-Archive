@@ -13,10 +13,16 @@ class WordGrid:
     def __str__(self):
         return self.get_stringified_word_grid()
 
+    def initialise_grid(self):
+        grid = []
 
-    def initialise_word_grid(self):
-        self.word_grid = [[" " for col in range(
-            self.cols)] for row in range(self.rows)]
+        for row in range(self.rows):
+            grid_row = []
+            for col in range(self.cols):
+                grid_row.append(" ")
+            grid.append(grid_row)
+
+        self.grid = grid
 
     def get_stringified_word_grid(self) -> str:
         output = ""
