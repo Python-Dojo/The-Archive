@@ -8,8 +8,9 @@ class DirectValueMeta(EnumMeta):
     def __getattribute__(cls, name):
         value = super().__getattribute__(name)
         if isinstance(value, cls):
-            value = value.value
-        return value
+            return value.value
+        else:
+            return value
 
     # This allows us to iterate through enum members in a for loop and access
     # the Point value directly
