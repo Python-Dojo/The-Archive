@@ -25,7 +25,7 @@ def main():
         exit(1)
 
 
-def generate_word_search(rows: int, cols: int, word_list: list[str]) -> WordGrid | None:
+def generate_word_search(rows: int, cols: int, word_list: list[str]) -> WordGrid:
     word_grid = WordGrid(rows, cols)
 
     attempts = 0
@@ -92,7 +92,7 @@ def get_all_legal_placements_for_word(
 
 def is_legal_placement(target_line: str, line_to_write: str) -> bool:
     for target_char, char_to_write in zip(target_line, line_to_write):
-        if (char_to_write is not target_char) and (target_char != " "):
+        if (char_to_write != target_char) and (target_char != " "):
             return False
     return True
 
