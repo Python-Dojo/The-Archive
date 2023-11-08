@@ -16,7 +16,7 @@ def main():
     word_list = ["PYTHON", "DOJO", "CODEHUB", "BRISTOL"]
 
     try:
-        word_search = generate_word_search(rows=6, cols=9, word_list)
+        word_search = generate_word_search(rows=6, cols=9, word_list=word_list)
         print(word_search)
         print("Find these words:")
         print(", ".join(word_list))
