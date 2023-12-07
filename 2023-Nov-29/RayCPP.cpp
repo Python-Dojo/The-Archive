@@ -174,6 +174,7 @@ int main()
     PrintFractionTest(0.2_F + 2_F, 2.2);
     PrintFractionTest(1_F / 2 + 1, 1.5);
     PrintFractionTest("1/2"_F + 1, 1.5);
+    PrintFractionTest(StringToFraction("1234/5678") + StringToFraction("3.1415"), 3.588300);
     PrintFractionTest(Fraction(1) + Fraction(4), 5);
     PrintFractionTest(Fraction(5, 2) * Fraction(6, 1) - Fraction(6, 3), 13);
     PrintFractionTest(Fraction(1, 10) + Fraction(2, 10), 0.3);
