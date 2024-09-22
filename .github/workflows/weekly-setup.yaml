@@ -1,0 +1,47 @@
+name: "Create Python Dojo Folders"
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "40 15 * * WED"
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+
+jobs:
+  setup:
+    name: weekly setup
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        ref: ${{ github.event.pull_request.head.ref }}
+
+    - name: Check if it's the second week
+      run: |
+        week_mod=$(( ( ($(date +%s) - $(date +%s -d 20240918)) / 604800 ) % 2 ))
+        echo "week_mod=$week_mod" >> "$GITHUB_ENV"
+
+    - name: Create Folders
+      if: ${{ github.event_name == 'workflow_dispatch' || env.week_mod == '0' }}
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+        
+        folder_name=$(date +"%Y-%b-%d")
+        
+        if ! [ -d "$folder_name" ]; then
+          mkdir -p "$folder_name/Group-1"
+          mkdir -p "$folder_name/Group-2"
+          touch "$folder_name/Group-1/main.py"
+          touch "$folder_name/Group-2/main.py"
+  
+          git add "$folder_name"
+          git commit -m "create python dojo folder for $folder_name"
+          git push
+        else
+          echo "Python dojo folder has already been created for this week, no commit made"
+        fi
