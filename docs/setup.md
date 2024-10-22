@@ -12,7 +12,7 @@ We use [Open Collaboration Tools](https://www.open-collab.tools/) to collaborate
 
 ## Joining a session
 
-1. You should now have a small "Open Collaboration" widget at the bottom right of vscode
+1. You should now have a small "Open Collaboration" widget at the bottom left of vscode
    ![join](./assets/collab-options.png)
 2. This opens a pop up, choose "Join Collaboration session"
    ![join](./assets/collab-join.png)
