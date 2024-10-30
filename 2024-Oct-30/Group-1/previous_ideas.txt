@@ -1,0 +1,143 @@
+Desktop UI testing framework
+ 
+
+Snake (with extra steps or quirky edge ) 
+ 
+
+make a small padding string game to get good at quick f-string padding
+ 
+
+update the gdal conan recipe to conan 2
+ 
+
+Passive standby screensaver
+ 
+
+game of life
+ 
+
+Python settings file where items can be expressions
+ 
+
+Vigenère cipher https://en.wikipedia.org/wiki/Vigenère_cipher
+ 
+
+Get comments/docstring and code from a file then create a question (write the function for the following docstring:) and answer (the code)
+ 
+
+Game of Life in APL: https://www.youtube.com/watch?v=a9xAKttWgP4
+YouTube
+Dyalog
+Conway's Game Of Life in APL
+Image
+ 
+
+Ball Sorting Puzzle brute force algorithm.
+ThreadBall Sorting Puzzle brute force1 Message ›
+There are no recent messages in this thread.
+ 
+
+Image
+ 
+
+Race to the Bottom Falling Game
+ 
+
+Tetris
+ 
+
+Documentation generator (docstrings) 
+ 
+
+Maze generator
+ 
+
+brainfuck interpreter
+ 
+
+Maze solver
+ 
+
+Hang man (game) including word generator
+ 
+
+get all the source code from a folder and do X on all the functions
+Create a question from a doc string
+ 
+
+Navigating a series of folders and subfolders and apply some kind of task?
+Or just make a pretty map
+Build your own Stack / Heap simulations?
+ 
+
+linux terminal emulator(cd, grep and cat, ls) 
+ 
+
+Only if we can implement bash scripting instead?
+ 
+
+brute force the monty hall problem
+ 
+
+https://www.youtube.com/watch?v=dbiNhAZlXZk&ab_channel=HarvardBusinessReview
+YouTube
+Harvard Business Review
+Use Strategic Thinking to Create the Life You Want
+Image
+ 
+
+typing speed test
+ 
+
+Wordle solver
+ 
+
+Auto generate documentation from calling dir
+ 
+
+Image
+ 
+
+auto generated prompts for an AI to gernerate documentation
+Get ideas from a mark down file (with tick boxes) and place a random three into the discord favouring the ones higher up.
+ 
+
+Use markov chains to auto-generate stories based off a block of text
+ 
+
+Generate teams
+ 
+
+Are we running now?
+ 
+
+Yeah
+ 
+
+Python Dojo Group Generator
+ 
+
+Python random idea for project generator
+Using some sort of webAPI
+ 
+
+Or using openAI 👀
+ 
+
+Who's got credits?
+Actually I probably have a few that need using this month
+Random Lama generator
+ 
+
+Python settings file where items can be expressions
+Use an encoding to find how similar two words are (in meaning) (using Ollama)
+ 
+
+Maze generator?
+ 
+
+Non-AI write documentation (the name of the function reformatted)
+ 
+
+Mountain erosion generator
+﻿

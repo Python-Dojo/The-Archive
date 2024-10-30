@@ -1,0 +1,42 @@
+Dojo ideas
+
+Python settings file where items can be expressions
+Go through my fit data, find every rolling week that I meet the recommended heart points
+Add elixir/erlang/gleam like pattern matching for functions to python. So 'def foo(n) while n == 0 do 1' is only ever called when n is 0 and returns 1 and 'def foo (n) while n > 3 do 2' is only ever called when n > 3 and always returns 2. See in elixir for more info.
+A C++ linter/common error fixer: anything after #endif or #else should be in a comment, using namespace should never be in a header file, a #define should never use a double underscore, new and delete should never be used in code (okay in comments and names)
+Remove C++ comments (test cases will be given, this is harder than first expected)
+Do regex expression over diff for each file as a precommit linting hook
+Git filter repo testing
+Build elixir/erlang style functions as callable classes
+Discord extension
+Get number of lines written by one person on a repo (then as a percentage?)
+Get ideas from a mark down file (with tick boxes) and place a random three into the discord favouring the ones higher up.
+Ask chat gpt a question, get the code and run it against unit tests, tell chatgpt what the output is and recurse until it passes all the tests
+View a folder like a file explorer but all in ascii art on the command line
+create flask UI for a previous project
+Auto Write really shitty documentation
+Hamming distance
+Manhattan distance
+copyright files 
+auto creation of est files read write (see copyright)
+Parse a menu and suggest an item
+chess AI
+Get comments/docstring and code from a file then create a question (write the function for the following docstring:) and answer (the code)
+Auto create a gitlab ticket
+parse file filled with cryptic crossword data and place in mysql database
+symbol demangler needs questions and answers
+
+
+Get commit history of a person from multiple GitHub and/or gitlab accounts and combine them to get a number of commits per real person
+execute a function in a shared library (.so on linux, .dll on windows or .dylib on mac)
+use regex to go through a file and or subdirectory, find all the classes in that subdirectory, then populate a factory with default initialisations of the results.
+Use an encoding to find how similar two words are (in meaning)
+fractional calculator (this is useful to avoid floating point imprecision)
+baseX encoding
+Desktop UI testing framework
+Auto write unit tests (quickest test)
+link error parser -- dojoneers
+Fastest Factorial calculation
+3 dimensional noughts and crosses
+Fastest Power calculation (avoid as many operations as possible)
+ (avoid as many operations as possible)
