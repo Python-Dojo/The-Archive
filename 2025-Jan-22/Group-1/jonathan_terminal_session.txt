@@ -1,0 +1,320 @@
+Last login: Tue Jan 14 20:10:45 on ttys012
+❯ ipython
+Python 3.13.1 (main, Dec  3 2024, 17:59:52) [Clang 16.0.0 (clang-1600.0.26.4)]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.31.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: def add_one(number):
+   ...:     return number + 1
+   ...:
+
+In [2]: add_one(101)
+Out[2]: 102
+
+In [3]: import braces from __future__
+  Cell In[3], line 1
+    import braces from __future__
+    ^
+SyntaxError: Did you mean to use 'from ... import ...' instead?
+
+
+In [4]: from __future__ import braces
+  Cell In[4], line 1
+    from __future__ import braces
+                           ^
+SyntaxError: not a chance
+
+
+In [5]: [1,2,1,0,0].find(1)
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Cell In[5], line 1
+----> 1 [1,2,1,0,0].find(1)
+
+AttributeError: 'list' object has no attribute 'find'
+
+In [6]: [1,2,1,0,0].index(1)
+Out[6]: 0
+
+In [7]: [i for i, x in enumerate([1,2,0,0,1]) if x == 1]
+Out[7]: [0, 4]
+
+In [8]: guess = [1,2,0,0,1]
+In [9]: guess
+Out[9]: [1, 2, 0, 0, 1]
+
+In [10]: enumerate(guess)
+Out[10]: <enumerate at 0x111c23380>
+
+In [11]: list(enumerate(guess))
+Out[11]: [(0, 1), (1, 2), (2, 0), (3, 0), (4, 1)]
+
+In [12]: [i for i, x in enumerate([1,2,0,0,1]) if x == 1]
+Out[12]: [0, 4]
+
+In [13]: for i in range(10):
+    ...:     print(i)
+    ...:
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+In [14]: [i for i in range(10)]
+Out[14]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+In [15]: [i*i for i in range(10)]
+Out[15]: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+In [16]: [(i,x) for (i,x) in enumerate(guess)]
+Out[16]: [(0, 1), (1, 2), (2, 0), (3, 0), (4, 1)]
+
+In [17]: [i for (i,x) in enumerate(guess)]
+Out[17]: [0, 1, 2, 3, 4]
+
+In [18]: [i for (i,x) in enumerate(guess) if x == 1]
+Out[18]: [0, 4]
+
+In [19]: [i for (i,x) in enumerate(guess) if x == 2]
+Out[19]: [1]
+
+In [20]: [i for (i,x) in enumerate(guess) if x == 0]
+Out[20]: [2, 3]
+
+In [21]: char_states = guess
+
+In [22]: guess = "CRANE"
+
+In [23]: char_states
+Out[23]: [1, 2, 0, 0, 1]
+
+In [24]: list(
+    ...: zip(guess, char_states)
+    ...: )
+Out[24]: [('C', 1), ('R', 2), ('A', 0), ('N', 0), ('E', 1)]
+
+In [25]: [letter for letter, colour in zip(guess, char_states) if colour == 2]
+Out[25]: ['R']
+
+In [26]: [letter for letter, colour in zip(guess, char_states) if colour == 1]
+Out[26]: ['C', 'E']
+
+In [27]: [letter for letter, colour in zip(guess, char_states) if colour == 0]
+Out[27]: ['A', 'N']
+
+In [28]: def letters_for_colour(colour):
+    ...:     return [l for l, c in zip(guess, char_states) if c == colour]
+    ...:
+
+In [29]: letters_for_colour(2)
+Out[29]: ['R']
+
+In [30]: letters_for_colour(1)
+Out[30]: ['C', 'E']
+
+In [31]: letters_for_colour(0)
+Out[31]: ['A', 'N']
+
+In [32]: char_states = [1,1,2,0,1]
+
+In [33]: letters_for_colour(0)
+Out[33]: ['N']
+
+In [34]: letters_for_colour(1)
+Out[34]: ['C', 'R', 'E']
+
+In [35]: letters_for_colour(2)
+Out[35]: ['A']
+
+In [36]: words = "truss
+    ...: trust
+    ...: truth
+    ...: tryst
+    ...: tubes
+    ...: tufts
+    ...: tulip
+    ...: tulle
+    ...: tuned
+    ...: tunes"
+  Cell In[36], line 1
+    words = "truss
+            ^
+SyntaxError: unterminated string literal (detected at line 1)
+
+
+In [37]: words = """truss
+    ...: trust
+    ...: truth
+    ...: tryst
+    ...: tubes
+    ...: tufts
+    ...: tulip
+    ...: tulle
+    ...: tuned
+    ...: tunes"""
+
+In [38]: words
+Out[38]: 'truss\ntrust\ntruth\ntryst\ntubes\ntufts\ntulip\ntulle\ntuned\ntunes'
+
+In [39]: words = words.split("\n")
+
+In [40]: words
+Out[40]:
+['truss',
+ 'trust',
+ 'truth',
+ 'tryst',
+ 'tubes',
+ 'tufts',
+ 'tulip',
+ 'tulle',
+ 'tuned',
+ 'tunes']
+
+In [41]: words.upper
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Cell In[41], line 1
+----> 1 words.upper
+
+AttributeError: 'list' object has no attribute 'upper'
+
+In [42]: words.upper()
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Cell In[42], line 1
+----> 1 words.upper()
+
+AttributeError: 'list' object has no attribute 'upper'
+
+In [43]: [ word.upper() for word in words ]
+Out[43]:
+['TRUSS',
+ 'TRUST',
+ 'TRUTH',
+ 'TRYST',
+ 'TUBES',
+ 'TUFTS',
+ 'TULIP',
+ 'TULLE',
+ 'TUNED',
+ 'TUNES']
+
+In [44]: words = [ word.upper() for word in words ]
+
+In [45]: letters_for_colour(2)
+Out[45]: ['A']
+
+In [46]: letters_for_colour(0)
+Out[46]: ['N']
+
+In [47]: 'N' in 'JONATHAN'
+Out[47]: True
+
+In [48]: 'X' in 'JONATHAN'
+Out[48]: False
+
+In [49]: [word for word in words if not 'N' in word]
+Out[49]: ['TRUSS', 'TRUST', 'TRUTH', 'TRYST', 'TUBES', 'TUFTS', 'TULIP', 'TULLE']
+
+In [50]: [i*i for i in range(10)]
+Out[50]: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+In [51]: words.filter(lambda word: not 'N' in word)
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Cell In[51], line 1
+----> 1 words.filter(lambda word: not 'N' in word)
+
+AttributeError: 'list' object has no attribute 'filter'
+
+In [52]: filter(words, lambda word: not 'N' in word)
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[52], line 1
+----> 1 filter(words, lambda word: not 'N' in word)
+
+TypeError: 'function' object is not iterable
+
+In [53]: filter(lambda word: not 'N' in word, words)
+Out[53]: <filter at 0x113c81e40>
+
+In [54]: list(filter(lambda word: not 'N' in word, words))
+Out[54]: ['TRUSS', 'TRUST', 'TRUTH', 'TRYST', 'TUBES', 'TUFTS', 'TULIP', 'TULLE']
+
+In [55]: [1, 2, 3] & [3, 4, 5]
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[55], line 1
+----> 1 [1, 2, 3] & [3, 4, 5]
+
+TypeError: unsupported operand type(s) for &: 'list' and 'list'
+
+In [56]: [1, 2, 3] && [3, 4, 5]
+  Cell In[56], line 1
+    [1, 2, 3] && [3, 4, 5]
+               ^
+SyntaxError: invalid syntax
+
+
+In [57]: set([1, 2, 3]) & set([3, 4, 5])
+Out[57]: {3}
+
+In [58]: set([1, 2, 3])
+Out[58]: {1, 2, 3}
+
+In [59]: {1,2,3}
+Out[59]: {1, 2, 3}
+
+In [60]: [word for word in words if not ['N', 'A'] in word]
+---------------------------------------------------------------------------
+TypeError                                 Traceback (most recent call last)
+Cell In[60], line 1
+----> 1 [word for word in words if not ['N', 'A'] in word]
+
+TypeError: 'in <string>' requires string as left operand, not list
+
+In [61]: [word for word in words if {'N', 'A'} & set(word) == {}]
+Out[61]: []
+
+In [62]: [word for word in words if {'N', 'A'} & set(word) != {}]
+Out[62]:
+['TRUSS',
+ 'TRUST',
+ 'TRUTH',
+ 'TRYST',
+ 'TUBES',
+ 'TUFTS',
+ 'TULIP',
+ 'TULLE',
+ 'TUNED',
+ 'TUNES']
+
+In [63]: [word for word in words if {'N', 'A'} & set(word) == {}]
+Out[63]: []
+
+In [64]: [{'N', 'A'} & set(word) for word in words]
+Out[64]: [set(), set(), set(), set(), set(), set(), set(), set(), {'N'}, {'N'}]
+
+In [65]: {}
+Out[65]: {}
+
+In [66]: set()
+Out[66]: set()
+
+In [67]: [word for word in words if {'N', 'A'} & set(word) == set()]
+Out[67]: ['TRUSS', 'TRUST', 'TRUTH', 'TRYST', 'TUBES', 'TUFTS', 'TULIP', 'TULLE']
+
+In [68]: [word for word in words if {'N', 'R'} & set(word) == set()]
+Out[68]: ['TUBES', 'TUFTS', 'TULIP', 'TULLE']
+
+In [69]: [word for word in words if set("NR") & set(word) == set()]
+Out[69]: ['TUBES', 'TUFTS', 'TULIP', 'TULLE']
+
+In [70]:
