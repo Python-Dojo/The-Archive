@@ -1,0 +1,3 @@
+python-gmail
+google-auth
+google-api-python-client
