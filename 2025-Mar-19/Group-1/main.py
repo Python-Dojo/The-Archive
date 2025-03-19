@@ -51,6 +51,9 @@ def organise_admins(data:dict, number_of_groups:int) -> list[Group]:
                 index_with_fewest_admins = admins_organised % number_of_groups
                 result_groups[index_with_fewest_admins].append(key)
             admins_organised +=1
+        else:
+            group_lens = [ len(x) for x in result_groups ]
+            
     return result_groups
 
 def sort_into
