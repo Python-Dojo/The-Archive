@@ -53,9 +53,9 @@ class Grid:
         for i in range(0, GRID_SIZE):
             for j in range(0, GRID_SIZE):
                 if self._grid[i][j]:
-                    print("X", end="")
+                    print(" X ", end="")
                 else:
-                    print(" ", end="")
+                    print("   ", end="")
             print("")
     
     def set_alive(self, i, j):

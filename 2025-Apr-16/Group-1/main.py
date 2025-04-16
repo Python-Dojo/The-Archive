@@ -50,20 +50,20 @@ def alabhya_make_next_frame(previous_frame: Grid):
 
 if __name__ == "__main__":
     base = init_grid()
-    base.get_grid()[0][0] = True
-    base.get_grid()[1][1] = True
-    base.get_grid()[0][1] = True
-    base.get_grid()[1][0] = True
+    # base.get_grid()[0][0] = True
+    # base.get_grid()[1][1] = True
+    # base.get_grid()[0][1] = True
+    # base.get_grid()[1][0] = True
 
-    base.print()
+    # base.print()
     print()
     frame2 = make_next_frame(base)
-    frame2.print()
-    frames = 1000
+    # frame2.print()
+    frames = 70
     CLEAR_CMD = "clear"
     os.system(CLEAR_CMD)
-    SLEEP_DURATION = 0.5
-    time.sleep(SLEEP_DURATION)
+    SLEEP_DURATION = 0.1
+    # time.sleep(SLEEP_DURATION)
 
     for i in range(frames):
         time.sleep(SLEEP_DURATION)
@@ -73,6 +73,3 @@ if __name__ == "__main__":
         
         base.print()
 
-
-
-    print("hello world")
