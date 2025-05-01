@@ -31,7 +31,7 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
         
-        folder_name=$(date +"%Y-%b-%d")
+        folder_name=$(date +"%Y-%M-%d")
         
         if ! [ -d "$folder_name" ]; then
           mkdir -p "$folder_name/Group-1"
