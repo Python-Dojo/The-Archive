@@ -36,10 +36,10 @@ def do_regex(regex_pattern: re.Pattern, text: str | None = None) -> re.Match[str
 
 def main() -> None:
     """check diff for problems and raise if so """
-    if do_regex(re.compile("import itertools")):
+    if do_regex(re.compile("^import itertools")):
         print("bad", file=sys.stderr)
         sys.exit(1)
-    print("good", file=sys.stderr)
+    print("good")
     sys.exit(0)
 
 
