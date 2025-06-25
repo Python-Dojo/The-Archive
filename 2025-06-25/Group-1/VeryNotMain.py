@@ -1,0 +1,1 @@
+/etc/fish/conf.d/codespaces.fish
