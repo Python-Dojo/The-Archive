@@ -50,8 +50,8 @@ def get_represetives_for_county(votes: list[Represtive]) -> Represtive:
         # get the represtive
         if vote._name in represtive_votes.keys():
             represtive_votes[vote._name] += 1
-        # if it doesn't exist create it and set to 1 (this is the first vote)
         else:
+            # if it doesn't exist create it and set to 1 (this is the first vote)
             represtive_votes.setdefault(vote._name, 1)
     
     # Voting functions:
