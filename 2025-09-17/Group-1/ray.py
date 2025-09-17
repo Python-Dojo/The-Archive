@@ -1,6 +1,9 @@
 
 
 import requests
+from bs4 import BeautifulSoup
+import re
+from dataclasses import dataclass
 
 # TODO: import
 @dataclass
@@ -24,20 +27,31 @@ def get_guardian_home_page() -> HtmlPage:
     # Read this
     # https://www.geeksforgeeks.org/python/implementing-web-scraping-python-beautiful-soup/
     # then fill in:
-    return requests.get(_URL)
+    return requests.get(_URL).text
 
 
+
+_HREF_REGEX = re.compile("/crosswords/[A-Za-z]+/[0-9]+")
 def get_crossword_page(home_page:str) -> HtmlPage:
     """
     Gets a crossword page from a home page
     """
-    ...
+    # bs4 magic to get all hrefs with /crosswords/ inside
+    print("<a" in home_page)
+    soup = BeautifulSoup(home_page, 'html.parser')
+    links = soup.find_all('a', href=_HREF_REGEX)
+
+    for link in links:
+        if link_text:= link.get("href"):
+            # make absolute links
+            yield requests.get(f"https://www.theguardian.com/{link_text}").text
 
 def get_crossword_from_page(page:HtmlPage) -> JsonData:
     """
     Gets the json data from a crossword page
     """
-    ...
+    soup = BeautifulSoup(page, "html.parser")
+    return soup.find("gu-island", name="CrosswordComponent").get("props")
 
 def parse_crossword_data(json_crossword:JsonData) -> list[Clue]:
     """
@@ -45,11 +59,12 @@ def parse_crossword_data(json_crossword:JsonData) -> list[Clue]:
     """
     ...
 
-def is_crossword_page(link_address:str) -> bool:
-    # href = /crosswords/{crossword_type}/{number}
-
-if __main__ == "__main__":
+if __name__ == "__main__":
     def main():
         home_page = get_guardian_home_page()
-        for links in bs4.links(home_page):
-            if 
+        for crossword_page in get_crossword_page(home_page):
+            crossword:JsonData = get_crossword_from_page(crossword_page)
+            clues:list[Clue] = parse_crossword_data(crossword)
+            # add to database
+    main()
+                
