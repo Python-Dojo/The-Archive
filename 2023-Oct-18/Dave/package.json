@@ -1,0 +1,16 @@
+{
+  "name": "Dave",
+  "version": "0.0.2",
+  "description": "",
+  "main": "main.py",
+  "scripts": {
+    "start": "nodemon main.py",
+    "test": "pytest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
