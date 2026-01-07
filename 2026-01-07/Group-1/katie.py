@@ -1,5 +1,5 @@
 MARKDOWN = """
-# Happy new year!
+# Hello world!
 
 Time to:
 - get poisoned
@@ -52,21 +52,20 @@ def replace_char(match: re.Match) -> str:
         case "T": return random.choice("Т")
         
 def do_replacements(string: str) -> str:
-    lines = string.split("\n")
+    words = string.split()
     modified: list[str] = []
-    for line in lines:
-        new_line: list[str] = []
-        for word in line.split(" "):
-            if similar := get_similar_words(word):
-                new_line.append(similar[0])
-            else:
-                new_line.append(word)
-        modified.append(" ".join(new_line))
-    resulting_markdown = "\n".join(modified)
+    for word in words:
+        if similar := get_similar_words(word):
+            modified.append(random.choice(similar))
+        else:
+            modified.append(word)
+    resulting_markdown = "".join(modified)
     return re.sub(r"ae|a|A|B|c|C|e|i|I|g|M|o|\||H|T", replace_char, resulting_markdown)
 
 if __name__ == "__main__":
     print(re.sub(r"cats", example_replacement, "cats have tails"))
     print(get_similar_words("small"))
     print(do_replacements(MARKDOWN))
-    print(do_replacements(MARKDOWN))
+
+
+
