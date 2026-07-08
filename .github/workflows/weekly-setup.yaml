@@ -35,9 +35,7 @@ jobs:
         
         if ! [ -d "$folder_name" ]; then
           mkdir -p "$folder_name/Group-1"
-          mkdir -p "$folder_name/Group-2"
           touch "$folder_name/Group-1/main.py"
-          touch "$folder_name/Group-2/main.py"
   
           git add "$folder_name"
           git commit -m "create python dojo folder for $folder_name"
